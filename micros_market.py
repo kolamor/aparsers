@@ -127,7 +127,6 @@ class Bs:
 	async def get_content(self, html):
 		soup = BeautifulSoup(html, 'lxml')
 		product = soup.find('div', id='bodycolumn').find('div', id='BodyContent')
-		# print(product)
 		product = product.find('ol', class_='ProductResults GameTiles').find_all('li')
 		for pr in product:
 			body = str(pr.find('a')).split('"')

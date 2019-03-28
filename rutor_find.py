@@ -84,12 +84,6 @@ class Bs:
 		url_pages.insert(0,send)
 		return url_pages
 
-
-	async def get_full_url_pages(self,pages):
-		full = [ rutor_url+a for a in pages]
-		return full
-
-
 	async def get_content(self, html):
 		soup = BeautifulSoup(html, 'lxml')
 		urls = soup.find('div', id='index').find('table').find_all('tr')
@@ -107,10 +101,6 @@ class Bs:
 			name = str(b[2]).split('"')[2][1:-5]
 			res = (name, self_url, magnet, url_resurs )
 			result.append(res)
-			# print("---",name)
-			# print("---",self_url)
-			# print("---",magnet)
-			# print("---", url_resurs )
 		return result
 
 	async def get_urls_content(self, html_list):
@@ -154,8 +144,6 @@ async def main():
 			await Save.save_csv(urls_pages)
 
 
-class NotFound(Exception):
-	pass
 
 
 if __name__ == '__main__':
